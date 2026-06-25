@@ -28,6 +28,8 @@ streamlit run app.py
 Abre en http://localhost:8501
 
 ## Demo en vivo
+👉 **https://msdnavgear3xigumclyjh2.streamlit.app**
+
 Desplegado en Streamlit Community Cloud (entrada: `app.py`).
 
 ## Origen
