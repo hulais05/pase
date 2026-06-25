@@ -33,6 +33,7 @@ EMOJI_ESTADO = {
 
 st.markdown("""
 <style>
+[data-testid="stToolbar"], [data-testid="stDecoration"], #MainMenu, header {visibility: hidden;}
 .block-container {padding-top: 2rem;}
 .kpi-card {background:#ffffff;border:1px solid #e6e6e6;border-radius:14px;
            padding:18px 20px;box-shadow:0 1px 4px rgba(0,0,0,.06);}
@@ -81,10 +82,14 @@ st.sidebar.caption("El pase de tu flota a la mina")
 st.sidebar.markdown(f"**Cliente:** {EMPRESA}")
 st.sidebar.markdown(f"**Fecha:** {HOY.strftime('%d/%m/%Y')}")
 st.sidebar.divider()
-vista = st.sidebar.radio(
-    "Navegación",
-    ["🚦 Semáforo de Flota", "🛻 Ficha de Vehículo", "💥 Siniestros", "📊 Reporte Ejecutivo"],
-)
+_VISTAS = ["🚦 Semáforo de Flota", "🛻 Ficha de Vehículo", "💥 Siniestros", "📊 Reporte Ejecutivo"]
+# permite abrir una vista directo por URL: ?v=0..3 (links directos a cada pantalla)
+try:
+    _idx = int(st.query_params.get("v", 0))
+    _idx = _idx if 0 <= _idx < len(_VISTAS) else 0
+except (ValueError, TypeError):
+    _idx = 0
+vista = st.sidebar.radio("Navegación", _VISTAS, index=_idx)
 st.sidebar.divider()
 st.sidebar.caption("Demo con datos ficticios · ESG Consulting NOA")
 
