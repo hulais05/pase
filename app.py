@@ -76,6 +76,14 @@ flota = _flota()
 siniestros = _siniestros()
 
 # ----------------------------------------------------------------------------
+# Personalización por URL: ?c=<clave> muestra el demo a nombre de un prospecto.
+# El nombre real solo aparece con su link; el demo público queda genérico.
+_CLIENTES = {"maga": "Grupo Maga"}
+_c = st.query_params.get("c", "")
+if _c in _CLIENTES:
+    EMPRESA = _CLIENTES[_c]
+
+# ----------------------------------------------------------------------------
 # Sidebar
 st.sidebar.markdown("## 🛡️ **PASE**")
 st.sidebar.caption("El pase de tu flota a la mina")
@@ -91,7 +99,10 @@ except (ValueError, TypeError):
     _idx = 0
 vista = st.sidebar.radio("Navegación", _VISTAS, index=_idx)
 st.sidebar.divider()
-st.sidebar.caption("Demo con datos ficticios · ESG Consulting NOA")
+if _c in _CLIENTES:
+    st.sidebar.caption(f"Demo preparado para {EMPRESA} · datos ficticios · ESG Consulting NOA")
+else:
+    st.sidebar.caption("Demo con datos ficticios · ESG Consulting NOA")
 
 
 # ============================================================================
