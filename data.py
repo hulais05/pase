@@ -11,7 +11,7 @@ import pandas as pd
 # --- Configuración del cliente ficticio ---
 EMPRESA = "Transportes del Norte S.R.L."
 MINA_CLIENTE = "Operación minera (cliente)"
-HOY = date(2026, 6, 24)
+HOY = date.today()
 
 # Documentos que la mina EXIGE para que un vehículo pueda ingresar al yacimiento.
 # Si alguno está vencido -> el vehículo NO puede entrar (no factura).
