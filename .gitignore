@@ -2,3 +2,6 @@
 __pycache__/
 *.pyc
 .DS_Store
+
+# notas locales de prospectos (nunca subir: contienen nombres reales)
+notas-*
