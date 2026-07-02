@@ -34,6 +34,9 @@ EMOJI_ESTADO = {
 st.markdown("""
 <style>
 [data-testid="stToolbar"], [data-testid="stDecoration"], #MainMenu, header {visibility: hidden;}
+/* el botón para re-desplegar el sidebar vive dentro del header: mantenerlo visible */
+[data-testid="stSidebarCollapsedControl"], [data-testid="collapsedControl"],
+[data-testid="stExpandSidebarButton"] {visibility: visible;}
 .block-container {padding-top: 2rem;}
 .kpi-card {background:#ffffff;border:1px solid #e6e6e6;border-radius:14px;
            padding:18px 20px;box-shadow:0 1px 4px rgba(0,0,0,.06);}
